@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Subarr {
+    public static void main(String[] args) {
+        //  Integer[] k={1,2,3,7,5};
+          Integer[] k={2,5,8,10,6};
+
+
+        ArrayList<Integer> n=new ArrayList<>(Arrays.asList(k));
+        System.out.println(n);
+         int sum=0;
+         int tar=12;
+        for(Integer i:n){
+            sum=sum+i;
+    }
+    System.out.println(sum);
+    int s=0;
+     boolean found = false;
+    for(Integer j :n){
+        if(sum-s==tar){
+              found = true;
+              System.out.println("yes");
+              break;
+        }
+        s=s+j;
+       
+    }
+
+    if(!found){
+        System.out.println("No");
+    }
+   
+
+    
+}
+}

@@ -1,0 +1,61 @@
+leetcode_258
+258. Add Digits
+
+Input: num = 38
+Output: 2
+Explanation: The process is
+38 --> 3 + 8 --> 11
+11 --> 1 + 1 --> 2 
+Since 2 has only one digit, return it.
+
+
+
+solution-1:
+class Solution {
+    public int addDigits(int num) {
+        while (num >= 10) { // While num has more than 1 digit
+            int sum = 0;
+            while (num > 0) {
+                sum += num % 10; // Add last digit
+                num /= 10;       // Remove last digit
+            }
+            num = sum; // Repeat with the new sum
+        }
+        return num;
+    }
+}
+
+solution-2:
+
+class Solution {
+    public int addDigits(int num) {
+        if (num == 0) return 0;
+        return num % 9 == 0 ? 9 : num % 9;
+    }
+}
+
+
+
+class Solution {
+    public int addDigits(int num) {
+        while (num >= 10) { // Keep looping until we have a single-digit number
+            int sum = 0;
+            
+            // Add digits one by one
+            while (num > 0) {
+                int digit = num % 10;
+                sum += digit;
+                num = num / 10;
+            }
+            
+            // Check if the new sum still has more than one digit
+            if (sum >= 10) {
+                num = sum; // Repeat the process
+            } else {
+                return sum; // Single-digit reached
+            }
+        }
+        
+        return num; // Already a single-digit number
+    }
+}
